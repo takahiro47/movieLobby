@@ -1,0 +1,41 @@
+extends _application
+
+block content
+  //- ヘッダナビ
+  #nav.ui-nav
+    nav(role='navigation')
+      //- サイトロゴ(左)
+      .pull-left.nav__logo
+        a.js-navi.js-navi-home(href='javascript:void(0)'): i.fa.fa-lastfm-square
+
+      //- メニュー開閉ボタン(右)
+      .pull-right.nav__hamburger-menu
+        a.js-nav-openToggle(href='javascript:void(0)'): i.fa.fa-bars
+
+      //- ページタイトル(中央)
+      .nav__title
+        h1 MovieLobby
+
+
+  //- メインコンテンツ
+  #content.ui-frame
+
+
+  //- テンプレート
+  script#tmpl-contents(type='text/template')
+    .ui-main
+      .content-tiles.clearfix
+        //- ここにコンテンツを読み込む
+      .content-tiles-more
+
+  script#tmpl-content(type='text/template')
+    a.js-navigate-single.clearfix(href='javascript:void(0)')
+      .content-header
+
+      .content-article
+        p.release-date
+          <%- release.month %>
+          em /
+          <%- release.date %>
+        h2.title <%- title %>
+      .content-footer

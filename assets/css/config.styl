@@ -1,0 +1,95 @@
+@import 'nib'
+
+/* = Settings
+ * ------------------------------------------------------------ */
+
+support-for-ie ?= true
+
+$nav_height = 48px
+$nav_color = #008629
+
+$base_color = #fff
+
+
+/* = Mixins
+ * ------------------------------------------------------------ */
+
+background-size(n)
+  -webkit-background-size n
+  -moz-background-size n
+  -o-background-size n
+  background-size n
+
+user-select()
+  -moz-user-select -moz-none
+  -khtml-user-select none
+  -ms-user-select none
+  -webkit-user-select none
+  user-select none
+
+omission()
+  white-space nowrap
+  text-overflow ellipsis
+  overflow hidden
+
+hidden()
+  display none
+  visibility hidden
+
+visible()
+  display block
+  visibility visible
+
+font-reset()
+  font-family Lato, "Helvetica Neue", sans-serif, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro W3", "メイリオ", "Meiryo UI", "MS PGothic"
+
+debug_frame()
+  min-height 960px
+  max-width 480px
+  margin-bottom 48px
+  border 1px solid
+  border-color #e5e6e9 #dfe0e4 #d0d1d5
+
+/* = Animations
+ * ------------------------------------------------------------ */
+
+@keyframes stripes
+  from
+    background-position 40px 0
+  to
+    background-position 0 0
+
+@keyframes spinner
+  0%
+    transform rotate(0deg)
+  50%
+    transform rotate(180deg)
+  100%
+    transform rotate(360deg)
+
+@keyframes poof
+  0%
+    transform rotate(0deg)
+  25%
+    transform rotate(-20deg)
+  75%
+    transform rotate(20deg)
+  100%
+    transform rotate(0deg)
+
+
+/* = Fonts
+ * ------------------------------------------------------------ */
+
+$fa-path = '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/fonts/FontAwesome-webfont'
+$fa-version ?= ''
+
+@font-face
+  font-family 'FontAwesome'
+  src url($fa-path+'.eot?v='+$fa-version)
+  src url($fa-path+'.eot?#iefix&v='+$fa-version) format('embedded-opentype'),
+    url($fa-path+'.woff?v='+$fa-version) format('woff'),
+    url($fa-path+'.ttf?v='+$fa-version) format('truetype'),
+    url($fa-path+'.svg?v='+$fa-version+'#fontawesomeregular') format('svg')
+  font-weight normal
+  font-style normal

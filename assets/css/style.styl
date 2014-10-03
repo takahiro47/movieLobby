@@ -1,0 +1,159 @@
+@import 'nib'
+@import 'config'
+
+/* = Reset
+ * ------------------------------------------------------------ */
+
+global-reset()
+
+
+/* = Plugins
+ * ------------------------------------------------------------ */
+
+@import '../../bower_components/bootstrap-stylus/stylus/bootstrap'
+@import '../../bower_components/font-awesome-stylus/stylus/font-awesome'
+
+
+/* = Scrollbar
+ * ------------------------------------------------------------ */
+
+scrollbar()
+  ::-webkit-scrollbar
+    width 6px
+    height 6px
+    background-color #fff
+  ::-webkit-scrollbar-track
+    background-color rgba(0, 0, 0, .1)
+    background-color #f5f5f5
+  ::-webkit-scrollbar-thumb
+    cursor pointer
+    background-color rgba(0, 0, 0, .2)
+    transition background-color .05s ease
+    &:hover
+      background-color rgba(0, 0, 0, .3)
+    &:active
+      background-color rgba(0, 0, 0, .45)
+
+
+/* = Global
+ * ------------------------------------------------------------ */
+
+body
+  background-color #fcfcfc
+  -webkit-font-smoothing antialiased
+  font-size 14px
+  font-reset()
+
+h1
+h2
+h3
+h4
+h5
+h6
+  font-reset()
+
+button
+  outline none
+
+a
+  color #00B7FF
+  &:hover
+    text-decoration none
+
+
+/* = UI
+ * ------------------------------------------------------------ */
+
+.ui-container
+  debug_frame()
+  position relative
+  margin 0 auto
+  background-color #fff
+
+  #nav
+    background-color $nav_color
+    background-image linear-gradient(top, $nav_color 0%, darken($nav_color, 24%) 100%)
+
+    .nav__logo
+    .nav__title
+    .nav__hamburger-menu
+      height $nav_height
+      width @height
+
+    // サイトロゴ(左), メニュー開閉ボタン(右)
+    .nav__logo
+    .nav__hamburger-menu
+      margin 0
+      text-align center
+      a
+        color #fff
+        font-size 24px
+        line-height $nav_height
+
+    // ページタイトル(中央)
+    .nav__title
+      width auto
+      margin 0 $nav_height
+      h1
+        margin 0
+        color #fff
+        font-size 24px
+        line-height $nav_height
+        text-align center
+
+
+  #content
+    hoge 0
+
+
+/* = 映画タイル
+ * ------------------------------------------------------------ */
+
+.content-tile
+  position relative
+  display block
+  background-color #000
+  background-size cover
+  background-repeat no-repeat
+
+  // タイルの縦横比を16:9に固定
+  &:after
+    content ''
+    display block
+    padding-top (9/16*100)%
+
+  a
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+
+    .content-header
+      hoge 0
+
+    .content-article
+      position absolute
+      left 0
+      bottom 0
+      width 100%
+      background-color rgba(0, 0, 0, .45)
+      .release-date
+      .title
+        margin 0
+        font-size 14px
+        font-weight 700
+        line-height 1.8em
+      .release-date
+        float left
+        width 54px
+        color #ffdd00
+        text-align center
+        em
+          padding 0 1px
+      .title
+        omission()
+        color #fff
+
+    .content-footer
+      hoge 0
