@@ -1,0 +1,134 @@
+
+//- コンテンツ一覧のテンプレート
+script#tmpl-contents(type='text/template')
+
+  .ui-main
+    .content-tiles.clearfix
+      //- ここにコンテンツを読み込む
+    .content-tiles-more
+
+
+//- 映画詳細のテンプレート
+script#tmpl-single-content(type='text/template')
+
+  //- .content-tile.type-single
+  .content-header
+    .content-article
+    h2.title
+      <%- title %>
+    img(src!='<%- thumbnail %>')
+
+    //- ここからタブ
+    .content-tab
+      //- Nav tabs
+      ul.nav.nav-tabs(role="tablist")
+        li.active
+          a(href="#home", role="tab", data-toggle="tab")
+            | 映画詳細
+        li
+          a(href="#profile", role="tab", data-toggle="tab")
+            | 見たい★
+            <%- wanted %>
+        li
+          a(href="#messages", role="tab", data-toggle="tab")
+            | 見た
+        li
+          a(href="#settings", role="tab", data-toggle="tab")
+            | コメント
+
+      //- タブの中身たち
+      .tab-content
+
+        //- 映画詳細タブ
+        div.tab-pane.fade.in.active#home
+
+          p.description <%- description %>
+
+          div.schedule
+            ul.week.clearfix
+              li 10/5(金)
+              li 6(土)
+              li 7(日)
+              li 8(月)
+              li 9(火)
+              li 10(水)
+              li 11(木)
+            ul.yesno.clearfix
+              li 〇
+              li 〇
+              li ×
+              li ×
+              li 〇
+              li 〇
+              li ×
+            p.attention
+             | 東京都内の上映情報(毎週木曜更新)
+             br
+             | ※上映時間・作品が変更となる場合がありますので、観賞の前に必ず劇場にてご確認ください。
+
+          div.buttons.clearfix
+            a(href!="https://www.google.co.jp/webhp?&ie=UTF-8#safe=off&q=<%- title %>")
+              button Google検索
+            a(href="http://doraemon-3d.com")
+              button 公式サイト
+          div.info
+            table
+              tr
+                th 監督
+                td 山崎貴, 山羊さん
+              tr
+                th 出演
+                td 水田わさび, 大原めぐみ, かかすゆみ
+              tr
+                th 公開日
+                td <%- release.month %> / <%- release.date %>
+              tr
+                th 制作国
+                td 日本
+              tr
+                th 制作年
+                td 2014
+
+
+
+
+        //- 見たい...中身d・・たぶ
+        div.tab-pane.fade#profile
+          | 見たい...中身d・・
+
+        //- みた...なかみ・・・
+        div.tab-pane.fade#messages
+          | みた...なかみ・・・
+
+        //- コメントたぶのなかみ・・・
+        div.tab-pane.fade#settings
+          | コメントたぶのなかみ・・・
+
+
+  .content-footer
+    <% if (wanted) { %>
+    .wanted
+      i.fa.fa-star
+      span <%- wanted %>
+    <% } %>
+
+
+    .release-date
+      <%- release.month %> / <%- release.date %>
+
+
+//- 映画一覧のテンプレート
+script#tmpl-list-content(type='text/template')
+
+  //- .content-tile.type-list
+  a.js-navigate-single.clearfix(href='javascript:void(0)')
+    .content-header
+      <% if (wanted) { %>
+      .wanted
+        i.fa.fa-star
+        span <%- wanted %>
+      <% } %>
+    .content-article
+      .release-date
+      h2.title <%- title %>
+    .content-footer

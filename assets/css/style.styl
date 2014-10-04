@@ -50,6 +50,7 @@ h3
 h4
 h5
 h6
+p
   font-reset()
 
 button
@@ -65,14 +66,17 @@ a
  * ------------------------------------------------------------ */
 
 .ui-container
-  debug_frame()
   position relative
+  width 100%
   margin 0 auto
   background-color #fff
+  debug_frame()
 
   #nav
+    fixed-position()
+    height $nav_height
     background-color $nav_color
-    background-image linear-gradient(top, $nav_color 0%, darken($nav_color, 24%) 100%)
+    // background-image linear-gradient(top, $nav_color 0%, darken($nav_color, 24%) 100%)
 
     .nav__logo
     .nav__title
@@ -95,6 +99,7 @@ a
       width auto
       margin 0 $nav_height
       h1
+        omission()
         margin 0
         color #fff
         font-size 24px
@@ -103,57 +108,148 @@ a
 
 
   #content
-    hoge 0
+    padding-top $nav_height
 
 
 /* = 映画タイル
  * ------------------------------------------------------------ */
 
 .content-tile
-  position relative
-  display block
-  background-color #000
-  background-size cover
-  background-repeat no-repeat
 
-  // タイルの縦横比を16:9に固定
-  &:after
-    content ''
-    display block
-    padding-top (9/16*100)%
-
-  a
-    position absolute
-    top 0
-    bottom 0
-    left 0
-    right 0
+  //- 映画詳細のテンプレート
+  &.type-single
+    position relative
 
     .content-header
-      hoge 0
+      .content-article
+      h2.title
+        font-size 15px
+        color #5C6067
+      img
+        hoge 0
 
-    .content-article
-      position absolute
-      left 0
-      bottom 0
-      width 100%
-      background-color rgba(0, 0, 0, .45)
-      .release-date
-      .title
-        margin 0
-        font-size 14px
-        font-weight 700
-        line-height 1.8em
-      .release-date
-        float left
-        width 54px
-        color #ffdd00
-        text-align center
-        em
-          padding 0 1px
-      .title
-        omission()
-        color #fff
+      //- ここからタブ
+      .content-tab
+        ul.nav-tabs
+          li
+            a
+              hoge 0
+        .tab-content
+          .tab-pane
+            padding 20px
+            background-color #C6E6B4
+            .description
+              margin 10px 0
+              font-size 12px
+
+            .schedule
+              margin 10px 0
+              ul.week
+              ul.yesno
+                margin 0px
+                li
+                  width (100/7)%
+                  float left
+                  text-align center
+                  font-weight bold
+                  border-right 1px solid #ccc
+                  line-height 2em
+                  &:first-child
+                    border-left 1px solid #ccc
+              ul.week
+                li
+                  background-color #ddd
+                  border-top 1px solid #ccc
+              ul.yesno
+                li
+                  background-color #fff
+                  border-bottom 1px solid #ccc
+              p.attention
+                margin 10px 0
+                font-size 12px
+                font-weight bold
+
+            .buttons
+              margin 20px auto
+              a
+                button
+                  display block
+                  height 48px
+                  width 40%
+                  float left
+                  color #fff
+                  background-color #65962C
+                  border none
+                  border-radius 3px
+                  letter-spacing .1em
+                  margin 0 5%
+
+            .info
+              background-color #fff
+              border-radius 3px
+
 
     .content-footer
-      hoge 0
+      .wanted
+      .release-date
+        hoge 0
+
+
+  //- 映画一覧のテンプレート
+  &.type-list
+    position relative
+    display block
+    background-color #000
+    background-size cover
+    background-repeat no-repeat
+
+    // タイルの縦横比を16:9に固定
+    &:after
+      content ''
+      display block
+      padding-top (9/16*100)%
+
+    a
+      position absolute
+      top 0
+      bottom 0
+      left 0
+      right 0
+
+      .content-header
+        .wanted
+          color white
+          float right
+          margin-right 5px
+          margin-top 4px
+          i
+            padding-right 4px
+          span
+            hoge 0
+            font-size 16px
+
+      .content-article
+        position absolute
+        left 0
+        bottom 0
+        width 100%
+        background-color rgba(0, 0, 0, .45)
+        .release-date
+        .title
+          margin 0
+          font-size 14px
+          font-weight 700
+          line-height 1.8em
+        .release-date
+          float left
+          width 72px
+          color #ffdd00
+          text-align center
+          em
+            padding 0 1px
+        .title
+          omission()
+          color #fff
+
+      .content-footer
+        hoge 0

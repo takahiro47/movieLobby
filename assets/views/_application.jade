@@ -3,18 +3,46 @@ html(lang='ja')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    //- ページタイトル
     title= title
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css')
+    //- お気に入りアイコン
+    link(rel='shortcut icon', href='/path/to/favicon.png', type='image/x-icon')
+    //- CSS
     link(rel='stylesheet', href='dist/css/style.css')
 
   body
     .ui-container
-      .ui-content
+      div.ui-content
+        //- ヘッダナビ
+        block header
+          #nav.ui-nav
+            nav(role='navigation')
+              //- サイトロゴ(左)
+              .pull-left.nav__logo
+                a.js-navi.js-navi-home(href='javascript:void(0)'): i.fa.fa-lastfm-square
+
+              //- メニュー開閉ボタン(右)
+              .pull-right.nav__hamburger-menu
+                a.js-nav-openToggle(href='javascript:void(0)'): i.fa.fa-bars
+
+              //- ページタイトル(中央)
+              .nav__title
+                h1 MovieLobby
+
+        //- メインコンテンツ
         block content
 
+
+    //- 映画アイテムなど繰り返し部分のテンプレート
+    include _templates
+
+
+    //- Javascriptで使う変数や設定等があったらここで出力
     .config
       #data('data-env'=process.env.NODE_ENV, 'data-domain'=process.env.DOMAIN)
 
+
+    //- Javascripts
     script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     //- script(src='//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js')
     //- script(src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js')

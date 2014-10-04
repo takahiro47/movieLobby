@@ -6,10 +6,11 @@
 support-for-ie ?= true
 
 $nav_height = 48px
-$nav_color = #008629
+$nav_color = #2E944D //#008629
 
 $base_color = #fff
 
+$fa-font-path = '../../static/fonts'
 
 /* = Mixins
  * ------------------------------------------------------------ */
@@ -40,12 +41,19 @@ visible()
   display block
   visibility visible
 
+fixed-position()
+  z-index 10
+  position fixed
+  top 0
+  left 0
+  width 100%
+
 font-reset()
   font-family Lato, "Helvetica Neue", sans-serif, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro W3", "メイリオ", "Meiryo UI", "MS PGothic"
 
 debug_frame()
   min-height 960px
-  max-width 480px
+  max-width 640px
   margin-bottom 48px
   border 1px solid
   border-color #e5e6e9 #dfe0e4 #d0d1d5
@@ -76,20 +84,3 @@ debug_frame()
     transform rotate(20deg)
   100%
     transform rotate(0deg)
-
-
-/* = Fonts
- * ------------------------------------------------------------ */
-
-$fa-path = '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/fonts/FontAwesome-webfont'
-$fa-version ?= ''
-
-@font-face
-  font-family 'FontAwesome'
-  src url($fa-path+'.eot?v='+$fa-version)
-  src url($fa-path+'.eot?#iefix&v='+$fa-version) format('embedded-opentype'),
-    url($fa-path+'.woff?v='+$fa-version) format('woff'),
-    url($fa-path+'.ttf?v='+$fa-version) format('truetype'),
-    url($fa-path+'.svg?v='+$fa-version+'#fontawesomeregular') format('svg')
-  font-weight normal
-  font-style normal
